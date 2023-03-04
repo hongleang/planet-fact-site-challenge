@@ -1,0 +1,62 @@
+.App {
+    background: url("./assets/assets/background-stars.svg"), rgb(var(--dark-blue));
+    color: white;
+    width: 100%;
+    min-height: 100vh;
+    max-width: 100vw;
+}
+
+.app-container {
+    padding: 0.5rem 1.5rem;
+}
+
+.btn {
+    width: 100%;
+    max-width: 360px;
+    padding: 15px 28px;
+    border: 1px solid rgb(var(--dark-gray));
+    text-transform: uppercase;
+    font-family: var(--secondary-font);
+    color: white;
+    font-weight: 700;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    transition: opacity, background .1s ease-in-out;
+}
+
+.btn span:first-child {
+    margin-right: 30px;
+    color: rgb(var(--light-gray));
+}
+
+.btn:hover {
+    opacity: .90;
+}
+
+.btn.active {
+    background-color: var(--planet-color);
+}
+
+.btn-wrapper {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn-wrapper .btn:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+/* Mobile size */
+
+@media all and (max-width: 480px) {
+    #info-selection {
+        display: none;
+    }
+}

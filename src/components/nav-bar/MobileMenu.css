@@ -1,0 +1,62 @@
+.mobile-menu {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: rgb(var(--dark-blue)) !important;
+    left: -10px;
+    top: -7px;
+    z-index: 1000;
+}
+
+ul {
+    padding: 0;
+}
+
+.mobile-menu-navs>li {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px 27px 25px;
+    border-bottom: 1px solid rgb(var(--dark-gray));
+    cursor: pointer;
+    transition: opacity .3s linear;
+}
+
+.mobile-menu-navs>li:hover {
+    opacity: .90;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    margin-right: 25px;
+}
+
+.planet-name-menu {
+    font-family: var(--secondary-font);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.planet-name-menu>* {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@media all and (min-width: 1024px) and (max-width: 1280px) {}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {}
+
+@media all and (min-width: 480px) and (max-width: 768px) {}
+
+@media all and (max-width: 480px) {
+    .mobile-menu {
+        display: block;
+    }
+}

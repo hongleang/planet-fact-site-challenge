@@ -1,0 +1,33 @@
+/* Info side */
+.info-side {
+    flex: 1 0 30%;
+}
+
+.info-container .h1 {
+    margin-bottom: 20px;
+}
+
+.info-side>* {
+    flex: 1 1 0;
+}
+
+.info-side p {
+    min-height: 170px;
+}
+
+.outer-link {
+    color: #ffff;
+    transition: opacity .5s ease-in;
+    opacity: .81;
+}
+
+.outer-link{
+    opacity: 1;
+}
+
+/* Mobile size */
+@media all and (max-width: 480px) {
+    .info-side {
+        text-align: center;
+    }
+}

@@ -1,0 +1,35 @@
+#planet-fact {
+    position: relative;
+}
+
+.bodyContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 127px;
+    row-gap: 20px;
+}
+
+/* Laptop size */
+@media all and (min-width: 768px) and (max-width: 1024px) {}
+
+/* Tablet size */
+@media all and (min-width: 480px) and (max-width: 768px) {
+    .bodyContainer {
+        flex-direction: column;
+    }
+
+    .info-side {
+        gap: 70px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+/* Mobile size */
+
+@media all and (max-width: 480px) {
+    #planet-fact {
+        height: auto;
+    }
+}

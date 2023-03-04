@@ -1,0 +1,192 @@
+/* Global styles */
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@500&family=League+Spartan:wght@400;700&display=swap');
+
+/* Css variables */
+:root {
+  --primary-font: 'Antonio', sans-serif;
+  --secondary-font: 'League Spartan', sans-serif;
+
+  /* Rgb value */
+  --dark-blue: 7, 7, 36;
+  --dark-gray: 56, 56, 79;
+  --light-gray: 131, 131, 145;
+  --cyan: 65, 158, 187;
+  --bright-yellow: 237, 162, 73;
+  --purple: 109, 46, 213;
+  --light-red: 209, 76, 50;
+  --red: 216, 58, 52;
+  --orange: 205, 81, 32;
+  --light-green: 30, 193, 162;
+  --blue: 45, 104, 240;
+  --planet-color: rgb(65, 158, 187);
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--primary-font);
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.h1 {
+  font-size: 80px;
+  line-height: 103px;
+}
+
+.h2 {
+  font-size: 40px;
+  line-height: 52px;
+  letter-spacing: -1.5;
+}
+
+.h3,
+.h4,
+.body-font {
+  line-height: 25px;
+}
+
+.h3 {
+  font-weight: 12px;
+  letter-spacing: 2.6;
+}
+
+.h4 {
+  font-size: 11px;
+  letter-spacing: 1;
+}
+
+.sub-header {
+  font-family: var(--secondary-font);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 25px;
+  letter-spacing: 1.2;
+}
+
+.body-font {
+  font-size: 14px;
+  font-family: var(--secondary-font);
+}
+
+.bg-dark-blue {
+  background-color: rbgb(var(--dark-blue));
+}
+
+.bg-dark-gray {
+  background-color: rbgb(var(--dark-gray));
+}
+
+.bg-light-gray {
+  background-color: rbgb(var(--light-gray));
+}
+
+.bg-cyan {
+  background-color: rbgb(var(--cyan));
+}
+
+.bg-bright-yellow {
+  background-color: rbgb(var(--bright-yellow));
+}
+
+.bg-purple {
+  background-color: rbgb(var(--purple));
+}
+
+.bg-light-red {
+  background-color: rbgb(var(--light-red));
+}
+
+.bg-red {
+  background-color: rbgb(var(--red));
+}
+
+.bg-orange {
+  background-color: rbgb(var(--orange));
+}
+
+.bg-light-green {
+  background-color: rbgb(var(--light-green));
+}
+
+.bg-blue {
+  background-color: rbgb(var(--blue));
+}
+
+.fw-light {
+  font-weight: 300;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.container {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#root {
+  position: relative;
+  overflow: hidden;
+}
+
+
+@media all and (max-width: 1400px) {
+  #root {
+    max-width: 1320px;
+  }
+}
+
+@media all and (max-width: 1200px) {
+  #root {
+    max-width: 1140px;
+  }
+}
+
+
+@media all and (max-width: 992px) {
+  #root {
+    max-width: 960px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  #root {
+    max-width: 768px;
+  }
+}
+
+@media all and (max-width: 576px) {
+  #root {
+    max-width: 540px;
+  }
+}
+
+/* Mobile size */
+
+@media all and (max-width: 576px) {
+  #root {
+    max-width: 100%;
+  }
+}

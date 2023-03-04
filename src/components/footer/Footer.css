@@ -1,0 +1,43 @@
+.planet-stats {
+    margin-top: 75px;
+}
+
+.stats-card-wrapper {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stats-card-wrapper li {
+    list-style: none;
+    flex: 1 1 0;
+}
+
+.stats-card {
+    border: 1px solid rgb(var(--dark-gray));
+    padding: 20px 24px;
+}
+
+/* Tablet size */
+@media all and (min-width: 480px) and (max-width: 768px) {
+    .stats-card .h2 {
+        font-size: 24px;
+    }
+}
+
+@media all and (max-width: 480px) {
+    .stats-card-wrapper li {
+        flex-basis: 100%;
+    }
+
+    .stats-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .stats-card .h2 {
+        font-size: 20px;
+    }
+}
