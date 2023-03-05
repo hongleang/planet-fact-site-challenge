@@ -32,6 +32,7 @@ export default function ImageSide({ planetImage, geologyImage }: Props) {
       <animated.img
         className="geology-image"
         src={geologyImage?.geology || ""}
+        alt="geology-img"
         style={{ ...springs }}
       />
     </div>
