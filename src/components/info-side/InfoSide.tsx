@@ -11,14 +11,14 @@ type Props = {
 
 export default function InfoSide({ planetInfo, selectedInfo, setSelectedInfo }: Props) {
 
-  if (!planetInfo) return <h2 className="h2">No Info was found for this selected planet.</h2>
+  if (!planetInfo) return <h1 className="h1">No Info was found for this selected planet.</h1>
 
   return (
     <div className="info-side">
       <div className="info-container">
-        <h2 className="h1 uppercase">
+        <h1 className="h1 uppercase">
           {planetInfo.name}
-        </h2>
+        </h1>
         <p className="body-font">
           {planetInfo.overview.content}
         </p>
