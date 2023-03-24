@@ -1,74 +1,75 @@
-import { useEffect, useRef, useState } from "react"
-import { Navbar, InfoSide, ImageSide, Footer } from '../../components'
-import { Images, RootData } from "../../models/RootData"
+import { useEffect, useRef, useState } from "react";
+import { Navbar, InfoSide, ImageSide, Footer } from "../../components";
+import { Images, RootData } from "../../models/RootData";
 
-import planetImageMapper from "../../data/imageNameMapper"
-
-import "./Body.css"
-import planetColorMapper from "../../data/planetColorMapper"
-
+import "./Body.css";
+import { usePlanetFact } from "../hooks/usePlanetFact";
+import {
+  useTrail,
+} from "@react-spring/web";
+import AnimationContainer from "./AnimationContainer";
 
 type Props = {
-    data: RootData[]
-}
+  data: RootData[];
+};
 
 export default function PlanetFactPage({ data }: Props) {
-    const defaultSelectedPlanet = data[0].name;
-    const [selectedPlanet, setSelectedPlanet] = useState<string>(defaultSelectedPlanet);
-    const [selectedInfo, setSelectedInfo] = useState<string>("overview");
+  const defaultSelectedPlanet = data[0].name;
+  const [selectedPlanet, setSelectedPlanet] = useState<string>(
+    defaultSelectedPlanet
+  );
+  const [selectedInfo, setSelectedInfo] = useState<string>("overview");
 
-    const planetNames = data.map((planet: RootData) => planet.name);
-    const planetDetails: RootData | undefined = data.find(planet => planet.name.toLowerCase() === selectedPlanet.toLowerCase());
-    const planetImageType = planetImageMapper?.[selectedInfo as keyof typeof planetImageMapper]
-    const planetImage = planetDetails?.images?.[planetImageType as keyof Images];
+  const { planetNames, planetImage, geologyImage, planetDetails } =
+    usePlanetFact({ data, selectedInfo, selectedPlanet });
 
-    const geologyImage = selectedInfo === "surface geology" ? {
-        planet: planetDetails?.images?.["planet"],
-        geology: planetDetails?.images?.["geology"]
-    } : undefined
+  const components = [
+    <Navbar
+      links={planetNames}
+      selectedPlanet={selectedPlanet}
+      setSelectedPlanet={setSelectedPlanet}
+      selectedInfo={selectedInfo}
+      setSelectedInfo={setSelectedInfo}
+    />,
+    <Body>
+      <ImageSide planetImage={planetImage} geologyImage={geologyImage} />
+      <InfoSide
+        planetInfo={planetDetails}
+        selectedInfo={selectedInfo}
+        setSelectedInfo={setSelectedInfo}
+      />
+    </Body>,
+    planetDetails && <Footer planetInfo={planetDetails} />,
+  ];
 
-    useEffect(() => {
-        const planetColorValue = planetColorMapper?.[selectedPlanet.toLowerCase() as keyof typeof planetColorMapper];
+  const trails = useTrail(components.length, {
+    from: { y: -100, x: 0, opacity: 0 },
+    to: { y: 0, x: 0, opacity: 1 },
+    config: {duration: 400 },
+    delay: 100,
+  });
 
-        if (planetColorValue) {
-            document.documentElement.style.setProperty('--planet-color', planetColorValue);
-        }
-    }, [selectedPlanet])
-
-    useEffect(() => {
-        window.addEventListener("resize", () => {
-            const width = window.innerWidth;
-            if (width > 452) {
-                localStorage.setItem("open-menu", "false")
-            }
-        })
-
-    }, [])
-
-
-
-    return (
-        <>
-            <Navbar
-                links={planetNames}
-                selectedPlanet={selectedPlanet}
-                setSelectedPlanet={setSelectedPlanet}
-                selectedInfo={selectedInfo}
-                setSelectedInfo={setSelectedInfo}
-            />
-            <Body>
-                <ImageSide planetImage={planetImage} geologyImage={geologyImage} />
-                <InfoSide planetInfo={planetDetails} selectedInfo={selectedInfo} setSelectedInfo={setSelectedInfo} />
-            </Body>
-            <Footer planetInfo={planetDetails} />
-        </>
-    )
+  return (
+    <>
+      {trails.map(({ x, y, opacity }, idx) => {
+        const verticalAnimation = { y, opacity };
+        const horizontalAnimation = { x, opacity };
+        return (
+          <AnimationContainer
+            animationProps={idx !== 1 ? verticalAnimation : horizontalAnimation}
+          >
+            {components[idx]}
+          </AnimationContainer>
+        );
+      })}
+    </>
+  );
 }
 
 const Body = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
-    return <section id="planet-fact" className="planetFactBody">
-        <div className="container bodyContainer">
-            {children}
-        </div>
+  return (
+    <section id="planet-fact" className="planetFactBody">
+      <div className="container bodyContainer">{children}</div>
     </section>
-}
+  );
+};
